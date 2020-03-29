@@ -122,9 +122,4 @@ class LinkedList {
         previous.next = node;
     }
 }
-// const checkLinkedList = new LinkedList()
-// checkLinkedList.append(5);
-// const l = new LinkedList();
-// l.getAt(10)
-
 module.exports = { Node, LinkedList };
