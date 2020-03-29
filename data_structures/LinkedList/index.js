@@ -10,9 +10,6 @@ class LinkedList {
         this.head = null;
     }
 
-    // append(data) {
-    //     console.log(data)
-    // }
     insertFirst(data) {
         const newNode = new Node(data, this.head)
         this.head = newNode;
@@ -83,10 +80,51 @@ class LinkedList {
         }
         ptr.next = newNode
     }
-    // getAt
-    // removeAt
-    // insertAt
+    getAt(index) {
+        let ptr = this.head;
+        let count = 0;
+        while(ptr) {
+            if(index === count) {
+                return ptr
+            }
+            ptr = ptr.next
+            count++
+        }
+        return null
+    }
+    removeAt(index) {
+        if (!this.head) {
+            return;
+          }
+      
+          if (index === 0) {
+            this.head = this.head.next;
+            return;
+          }
+      
+          const previous = this.getAt(index - 1);
+          if (!previous || !previous.next) {
+            return;
+          }
+          previous.next = previous.next.next;
+    }
+    insertAt(index, data) {
+        if(!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+        if(index == 0) {
+            this.head = new Node(data, this.head)
+            return
+        }
+        const previous = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, previous.next);
+        previous.next = node;
+    }
 }
 // const checkLinkedList = new LinkedList()
 // checkLinkedList.append(5);
+// const l = new LinkedList();
+// l.getAt(10)
+
 module.exports = { Node, LinkedList };
