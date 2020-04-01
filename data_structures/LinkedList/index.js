@@ -121,5 +121,23 @@ class LinkedList {
         const node = new Node(data, previous.next);
         previous.next = node;
     }
+
+    reverse() {
+        if(!this.head || !this.head.next) {
+            return this.head
+        }
+        let first = this.head;
+        let second = this.head.next;
+        while(second) {
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+        }
+        this.head.next = null;
+        this.head = first
+        return this.head;
+    }
+
 }
 module.exports = { Node, LinkedList };
