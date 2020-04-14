@@ -15,7 +15,7 @@ class Node {
       return this.top
     }
     push(value){
-      const node = new Node(value, null)
+      const node = new Node(value)
       if(!this.length) {
         this.top = node;
         this.bottom = node
